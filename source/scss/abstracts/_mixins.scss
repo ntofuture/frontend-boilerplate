@@ -1,0 +1,51 @@
+@use "sass:map";
+@use "./variables" as variables;
+
+@mixin screen-up($width) {
+  @if map.has-key(variables.$screen, $width) {
+    $width-value: map.get(variables.$screen, $width);
+
+    @media only screen and (min-width: $width-value) {
+      @content;
+    }
+  }
+
+  @else {
+    @warn 'Invalid screen: #{$width}.';
+  }
+}
+
+@mixin screen-down($width) {
+  @if map.has-key(variables.$screen, $width) {
+    $width-value: map.get(variables.$screen, $width);
+
+    @media only screen and (max-width: ($width-value - 1)) {
+      @content;
+    }
+  }
+
+  @else {
+    @warn 'Invalid screen: #{$width}.';
+  }
+}
+
+@mixin screen-between($lower, $upper) {
+  @if map.has-key(variables.$screen, $lower) and map.has-key(variables.$screen, $upper) {
+    $lower-screen: map.get(variables.$screen, $lower);
+    $upper-screen: map.get(variables.$screen, $upper);
+
+    @media only screen and (min-width: $lower-screen) and (max-width: ($upper-screen - 1)) {
+      @content;
+    }
+  }
+
+  @else {
+    @if (map.has-key(variables.$screen, $lower)==false) {
+      @warn 'Your lower screen was invalid: #{$lower}.';
+    }
+
+    @if (map.has-key(variables.$screen, $upper)==false) {
+      @warn 'Your upper screen was invalid: #{$upper}.';
+    }
+  }
+}
