@@ -208,8 +208,6 @@ yarn install
 
 </details>
 
-#
-
 <a target="_blank" href="https://nextofuture.com">
     <img src="https://storage.nextofuture.com/images/logo/logo.svg" alt="Next of Future" width="100">
     <p>nextofuture.com</p>
