@@ -22,14 +22,12 @@ const scss = () => {
   if (config.build) {
     result = result
       .pipe(sass({ outputStyle: "compressed", includePaths: ["node_modules"] }).on("error", sass.logError))
-      .pipe(postCss([autoprefixer()]))
       .pipe(
         purgecss({
-          content: ["template/**/*.html"],
-          defaultExtractor: (content) => content.match(/[\w-/:%.]+(?<!:)/g) || [],
-          // safelist: ["is-active", /^swiper-/]
+          content: [`${config.source}/template/**/*.html`],
         })
       )
+      .pipe(postCss([autoprefixer()]))
       .pipe(
         cleanCss({
           level: {
@@ -63,14 +61,12 @@ const cssLibrary = () => {
   let result = gulp.src(config.libCss.source.paths).pipe(encode({ from: "windows1250", to: "utf8" }));
   if (config.build) {
     result = result
-      .pipe(postCss([autoprefixer()]))
       .pipe(
         purgecss({
-          content: ["template/**/*.html"],
-          defaultExtractor: (content) => content.match(/[\w-/:%.]+(?<!:)/g) || [],
-          // safelist: ["is-active", /^swiper-/]
+          content: [`${config.source}/template/**/*.html`],
         })
       )
+      .pipe(postCss([autoprefixer()]))
       .pipe(
         cleanCss({
           level: {
@@ -99,14 +95,12 @@ const cssVendor = () => {
   let result = gulp.src(config.vendorCss.source.paths).pipe(encode({ from: "windows1250", to: "utf8" }));
   if (config.build) {
     result = result
-      .pipe(postCss([autoprefixer()]))
       .pipe(
         purgecss({
-          content: ["template/**/*.html"],
-          defaultExtractor: (content) => content.match(/[\w-/:%.]+(?<!:)/g) || [],
-          // safelist: ["is-active", /^swiper-/]
+          content: [`${config.source}/template/**/*.html`],
         })
       )
+      .pipe(postCss([autoprefixer()]))
       .pipe(
         cleanCss({
           level: {

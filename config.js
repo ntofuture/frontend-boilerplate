@@ -4,7 +4,7 @@ const source = "source";
 const release = "release";
 
 let config = {
-  build: process.argv[2] === "build",
+  build: process.argv[2] === "build" || process.argv[2] === "build-clean",
   app: app,
   source: source,
   port: port,
