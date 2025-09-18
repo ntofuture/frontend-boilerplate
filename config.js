@@ -35,7 +35,7 @@ let config = {
       path: `${app}/assets/css`,
     },
     source: {
-      paths: [`${source}/lib/css/**/*.css`],
+      paths: [`${source}/lib/css/*.css`],
     },
   },
   vendorCss: {
@@ -62,7 +62,7 @@ let config = {
       path: `${app}/assets/js`,
     },
     source: {
-      paths: [`${source}/lib/js/**/*.js`],
+      paths: [`${source}/lib/js/*.js`],
     },
   },
   vendorJs: {
