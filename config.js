@@ -47,6 +47,14 @@ let config = {
       paths: [`${source}/lib/css/vendor/*.css`],
     },
   },
+  fixCss: {
+    destination: {
+      path: `${app}/assets/css`,
+    },
+    source: {
+      paths: [`${source}/lib/css/fix/*.css`],
+    },
+  },
   js: {
     destination: {
       name: "all.min.js",
@@ -72,6 +80,14 @@ let config = {
     },
     source: {
       paths: [`${source}/lib/js/vendor/*.js`],
+    },
+  },
+  fixJs: {
+    destination: {
+      path: `${app}/assets/js`,
+    },
+    source: {
+      paths: [`${source}/lib/js/fix/*.js`],
     },
   },
   font: {

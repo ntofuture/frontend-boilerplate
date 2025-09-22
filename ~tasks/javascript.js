@@ -31,4 +31,11 @@ const jsVendor = () => {
   return gulp.src(config.vendorJs.source.paths).pipe(terser()).pipe(concat(config.vendorJs.destination.name)).pipe(gulp.dest(config.vendorJs.destination.path));
 };
 
-export const javascript = gulp.parallel(js, jsLibrary, jsVendor);
+export const jsFix = () => {
+  let files = globbySync(config.fixCss.source.paths);
+  if (files.length === 0) return gulp.src(".");
+
+  return gulp.src(files).pipe(gulp.dest(config.fixJs.destination.path));
+};
+
+export const javascript = gulp.parallel(js, jsLibrary, jsVendor, jsFix);
