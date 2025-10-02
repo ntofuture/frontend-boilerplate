@@ -32,7 +32,7 @@ const jsVendor = () => {
 };
 
 export const jsFix = () => {
-  let files = globbySync(config.fixCss.source.paths);
+  let files = globbySync(config.fixJs.source.paths);
   if (files.length === 0) return gulp.src(".");
 
   return gulp.src(files).pipe(gulp.dest(config.fixJs.destination.path));
