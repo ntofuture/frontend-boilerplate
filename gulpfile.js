@@ -4,7 +4,7 @@ import run from "gulp4-run-sequence";
 import config from "./config.js";
 
 import { browser } from "./~tasks/browser.js";
-import { clean } from "./~tasks/clean.js";
+import { clean, cleanAll } from "./~tasks/clean.js";
 import { compress } from "./~tasks/compress.js";
 import { css } from "./~tasks/css.js";
 import { font } from "./~tasks/font.js";
@@ -31,8 +31,8 @@ const watch = () => {
 };
 
 gulp.task("development", (cb) => run(javascript, css, template, [browser, watch], cb));
-gulp.task("build", (cb) => run([font, image, video], javascript, css, template, cb));
-gulp.task("build-clean", (cb) => run(clean, [font, image, video], javascript, css, template, cb));
+gulp.task("build", (cb) => run(clean, [font, image, video], javascript, css, template, cb));
+gulp.task("build-clean", (cb) => run(cleanAll, [font, image, video], javascript, css, template, cb));
 gulp.task("compress", (cb) => run(compress, cb));
 gulp.task("release", (cb) => run(release, cb));
 gulp.task("release-full", (cb) => run(releaseFull, cb));
