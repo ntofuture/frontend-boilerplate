@@ -4,7 +4,7 @@ const source = "source";
 const release = "release";
 
 let config = {
-  build: process.argv[2] === "build" || process.argv[2] === "build-clean",
+  build: process.argv[2] === "build",
   app: app,
   source: source,
   port: port,
@@ -47,12 +47,13 @@ let config = {
       paths: [`${source}/lib/css/vendor/*.css`],
     },
   },
-  fixCss: {
+  constantsCss: {
     destination: {
+      name: "const.min.css",
       path: `${app}/assets/css`,
     },
     source: {
-      paths: [`${source}/lib/css/fix/*.css`],
+      paths: [`${source}/lib/css/consts/*.css`],
     },
   },
   js: {
@@ -82,12 +83,13 @@ let config = {
       paths: [`${source}/lib/js/vendor/*.js`],
     },
   },
-  fixJs: {
+  constantsJs: {
     destination: {
+      name: "const.min.js",
       path: `${app}/assets/js`,
     },
     source: {
-      paths: [`${source}/lib/js/fix/*.js`],
+      paths: [`${source}/lib/js/consts/*.js`],
     },
   },
   font: {
@@ -96,6 +98,14 @@ let config = {
     },
     source: {
       paths: [`${source}/fonts/**/*.{eot,svg,ttf,woff,woff2,otf}`],
+    },
+  },
+  file: {
+    destination: {
+      path: `${app}/assets/files`,
+    },
+    source: {
+      paths: [`${source}/files/**/*.*`],
     },
   },
   video: {
@@ -115,6 +125,14 @@ let config = {
     },
   },
   release: {
+    file: {
+      destination: {
+        path: `${release}/files`,
+      },
+      source: {
+        paths: [`${app}/assets/files/*.*`],
+      },
+    },
     css: {
       destination: {
         path: `${release}/css`,

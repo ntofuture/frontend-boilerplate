@@ -14,7 +14,8 @@ const releaseJs = () => releaseFile(config.release.js.source.paths, config.relea
 const releaseFont = () => releaseFile(config.release.fonts.source.paths, config.release.fonts.destination.path);
 const releaseImage = () => releaseFile(config.release.images.source.paths, config.release.images.destination.path);
 const releaseVideo = () => releaseFile(config.release.videos.source.paths, config.release.videos.destination.path);
+const releaseFiles = () => releaseFile(config.release.file.source.paths, config.release.file.destination.path);
 
 export const release = gulp.parallel(releaseCss, releaseJs, releaseFont);
 
-export const releaseFull = gulp.parallel(releaseCss, releaseJs, releaseFont, releaseImage, releaseVideo);
+export const releaseFull = gulp.parallel(releaseCss, releaseJs, releaseFont, releaseImage, releaseVideo, releaseFiles);

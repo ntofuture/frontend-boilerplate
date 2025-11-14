@@ -23,7 +23,7 @@ yarn install
 | ------------------- | ---------------------------------------------------------------------------------------------- |
 | `yarn dev`          | Run development server with file watching and live reload.                                     |
 | `yarn build`        | The `app` folder generates the production output.                                              |
-| `yarn build-clean`  | Clears the `app` folder and caches, then generates the production output.                      |
+| `yarn clean`        | Clears the `app` folder and caches, then generates the production output.                      |
 | `yarn release`      | Copy built CSS, JS, and fonts to the `release` folder.                                         |
 | `yarn release-full` | Creates a release package containing visuals and videos and copies it to the `release` folder. |
 
@@ -40,6 +40,7 @@ yarn install
    ├─ template/
    ├─ images/
    ├─ fonts/
+   ├─ files/
    └─ videos/
 ```
 
@@ -68,6 +69,7 @@ yarn install
     - `svgo` Reduces SVG files and cleans up unnecessary features.
   - `gulp-webp` Converts image files (png, jpg, jpeg) to WebP format.
 - **font** – Copies font files with cache checking.
+- **file** – Copies all files with cache checking.
 - **video** – Copies video files with cache checking.
 - **template** – Processes HTML templates with `gulp-file-include` and formats all HTML files.
 - **compress** – Generates `.gz` and `.br` compression files for CSS/JS.
@@ -127,7 +129,7 @@ yarn install
 | ------------------- | ---------------------------------------------------------------------------------------------- |
 | `yarn dev`          | Dosyaları izleyip canlı yenileme yapan geliştirme sunucusu oluşturur.                          |
 | `yarn build`        | `app` klasörünü üretim çıktısı oluşturur.                                                      |
-| `yarn build-clean`  | `app` klasörünü ve ön bellekleri temizleyip üretim çıktısı oluşturur.                          |
+| `yarn clean`        | `app` klasörünü ve ön bellekleri temizleyip üretim çıktısı oluşturur.                          |
 | `yarn release`      | Derlenen CSS, JS ve fontları `release` klasörüne kopyalar.                                     |
 | `yarn release-full` | Görsel ve videoları da içerecek şekilde yayın hazır paket üretir `release` klasörüne kopyalar. |
 
@@ -144,6 +146,7 @@ yarn install
    ├─ template
    ├─ images
    ├─ fonts
+   ├─ files
    └─ videos
 ```
 
@@ -172,6 +175,7 @@ yarn install
     - `svgo` SVG dosyalarını küçültüyor ve gereksiz özellikleri temizliyor.
   - `gulp-webp` Görsel (png, jpg, jpeg) dosyalarını WebP formatına çevirir.
 - **font** – Font dosyalarını önbellek kontrolüyle kopyalar.
+- **file** – Tüm dosyaları önbellek kontrolüyle kopyalar.
 - **video** – Video dosyalarını önbellek kontrolüyle kopyalar.
 - **template** – HTML şablonlarını `gulp-file-include` ile işler ve tüm HTML dosyalarını Formatlar.
 - **compress** – CSS/JS için `.gz` ve `.br` sıkıştırma dosyaları üretir.
