@@ -46,7 +46,7 @@ yarn install
 
 ## Gulp Tasks
 
-- **browser** – Serves the `app/` folder via localhost:**3000** (config.js:port) using BrowserSync.
+- **browser** – Serves the `app/` folder via localhost:**3000** (config.js:port) using BrowserSync. Also you can use private browser. (config.js:browser)
 - **clean** – Cleans the `app` folder and cache.
 - **css** – Compiles SCSS and CSS (library) files without compression.
   - The following steps occur during the **build** process:
@@ -152,7 +152,7 @@ yarn install
 
 ## Gulp Görevleri
 
-- **browser** – BrowserSync ile `app/` klasörünü localhost:**3000** (config.js:port) üzerinden servis eder.
+- **browser** – BrowserSync ile `app/` klasörünü localhost:**3000** (config.js:port) üzerinden servis eder. Ayrıca özel tarayıcı kullanabilirsiniz. (config.js:browser)
 - **clean** – `app` klasörünü ve ön belleği temizler.
 - **css** – SCSS ve CSS (kütüphane) dosyalarını sıkıştırmamış şekilde derler.
   - **build** işlemi sırasında aşağıdaki işlemler gerçekleşir:

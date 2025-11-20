@@ -8,6 +8,11 @@ let config = {
   app: app,
   source: source,
   port: port,
+  browser: {
+    isActive: false,
+    path: "C:\\Users\\DCanS\\AppData\\Local\\Blisk\\Application\\blisk.exe",
+    args: ["--user-data-dir=C:\\~browsers\\blisk\\application.com", `http://localhost:${port}`],
+  },
   cache: {
     path: `${source}/cache`,
   },
