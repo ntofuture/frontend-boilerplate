@@ -31,11 +31,11 @@ const jsVendor = () => {
   return gulp.src(config.vendorJs.source.paths).pipe(terser()).pipe(concat(config.vendorJs.destination.name)).pipe(gulp.dest(config.vendorJs.destination.path));
 };
 
-export const jsFix = () => {
-  let files = globbySync(config.fixJs.source.paths);
+export const jsConstants = () => {
+  let files = globbySync(config.constantsJs.source.paths);
   if (files.length === 0) return gulp.src(".");
 
-  return gulp.src(files).pipe(gulp.dest(config.fixJs.destination.path));
+  return gulp.src(files).pipe(gulp.dest(config.constantsJs.destination.path));
 };
 
-export const javascript = gulp.parallel(js, jsLibrary, jsVendor, jsFix);
+export const javascript = gulp.parallel(js, jsLibrary, jsVendor, jsConstants);

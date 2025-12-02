@@ -122,14 +122,14 @@ const cssVendor = () => {
   return result.pipe(concat(config.vendorCss.destination.name)).pipe(gulp.dest(config.vendorCss.destination.path));
 };
 
-export const cssFix = () => {
-  let files = globbySync(config.fixCss.source.paths);
+export const cssConstants = () => {
+  let files = globbySync(config.constantsCss.source.paths);
   if (files.length === 0) return gulp.src(".");
 
   return gulp
     .src(files)
     .pipe(encode({ from: "windows1250", to: "utf8" }))
-    .pipe(gulp.dest(config.fixCss.destination.path));
+    .pipe(gulp.dest(config.constantsCss.destination.path));
 };
 
-export const css = gulp.parallel(scss, cssLibrary, cssVendor, cssFix);
+export const css = gulp.parallel(scss, cssLibrary, cssVendor, cssConstants);
