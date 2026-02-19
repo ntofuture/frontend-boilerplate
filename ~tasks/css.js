@@ -13,6 +13,29 @@ import config from "../config.js";
 
 const sass = gulpSass(defaultSass);
 
+const cssSafeList = [
+  /^swiper/,
+  /^iti/,
+  /^aos/,
+  /^modal/,
+  /^carousel/,
+  /^collapse/,
+  /^top/,
+  /^scrolled/,
+  /^show/,
+  /^hide/,
+  /^fade/,
+  /^active/,
+  /^open/,
+  /^visible/,
+  /^hidden/,
+  /^bs-/,
+  /^btn/,
+  /^nav/,
+  /^dropdown/,
+  /^col-/,
+];
+
 const scss = () => {
   let files = globbySync(config.scss.source.paths);
   if (files.length === 0) return gulp.src(".");
@@ -24,10 +47,15 @@ const scss = () => {
       .pipe(sass({ outputStyle: "compressed", includePaths: ["node_modules"] }).on("error", sass.logError))
       .pipe(
         purgecss({
-          content: [`${config.source}/template/**/*.html`],
+          content: [`${config.source}/template/**/*.html`, `${config.source}/js/**/*.js`],
+          safelist: {
+            standard: cssSafeList,
+            deep: [/^data-/, /^stroke/, /^aria-/],
+            greedy: [/animate/, /transition/],
+          },
+          defaultExtractor: (content) => content.match(/[\w-/:]+(?<!:)/g) || [],
         })
       )
-      .pipe(postCss([autoprefixer()]))
       .pipe(
         cleanCss({
           level: {
@@ -63,26 +91,31 @@ const cssLibrary = () => {
     result = result
       .pipe(
         purgecss({
-          content: [`${config.source}/template/**/*.html`],
+          content: [`${config.source}/template/**/*.html`, `${config.source}/js/**/*.js`],
+          safelist: {
+            standard: cssSafeList,
+            deep: [/^data-/, /^aria-/],
+            greedy: [/animate/, /transition/],
+          },
+          defaultExtractor: (content) => content.match(/[\w-/:]+(?<!:)/g) || [],
         })
       )
-      .pipe(postCss([autoprefixer()]))
       .pipe(
         cleanCss({
           level: {
             1: { specialComments: 0 },
             2: {
-              mergeAdjacentRules: true,
+              mergeAdjacentRules: false,
               mergeIntoShorthands: true,
-              mergeMedia: true,
+              mergeMedia: false,
               removeEmpty: true,
-              reduceNonAdjacentRules: true,
-              restructureRules: true,
+              reduceNonAdjacentRules: false,
+              restructureRules: false,
             },
           },
         })
       )
-      .pipe(csso({ restructure: true, forceMediaMerge: true }));
+      .pipe(csso({ restructure: false, forceMediaMerge: false }));
   }
 
   return result.pipe(concat(config.libCss.destination.name)).pipe(gulp.dest(config.libCss.destination.path));
@@ -97,26 +130,31 @@ const cssVendor = () => {
     result = result
       .pipe(
         purgecss({
-          content: [`${config.source}/template/**/*.html`],
+          content: [`${config.source}/template/**/*.html`, `${config.source}/js/**/*.js`],
+          safelist: {
+            standard: cssSafeList,
+            deep: [/^data-/, /^aria-/],
+            greedy: [/animate/, /transition/],
+          },
+          defaultExtractor: (content) => content.match(/[\w-/:]+(?<!:)/g) || [],
         })
       )
-      .pipe(postCss([autoprefixer()]))
       .pipe(
         cleanCss({
           level: {
             1: { specialComments: 0 },
             2: {
-              mergeAdjacentRules: true,
+              mergeAdjacentRules: false,
               mergeIntoShorthands: true,
-              mergeMedia: true,
+              mergeMedia: false,
               removeEmpty: true,
-              reduceNonAdjacentRules: true,
-              restructureRules: true,
+              reduceNonAdjacentRules: false,
+              restructureRules: false,
             },
           },
         })
       )
-      .pipe(csso({ restructure: true, forceMediaMerge: true }));
+      .pipe(csso({ restructure: false, forceMediaMerge: false }));
   }
 
   return result.pipe(concat(config.vendorCss.destination.name)).pipe(gulp.dest(config.vendorCss.destination.path));

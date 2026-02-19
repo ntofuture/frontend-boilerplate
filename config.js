@@ -2,6 +2,7 @@ const port = 3000;
 const app = "app";
 const source = "source";
 const release = "release";
+const browserName = "nextofuture.com";
 
 let config = {
   build: process.argv[2] === "build",
@@ -9,9 +10,9 @@ let config = {
   source: source,
   port: port,
   browser: {
-    isActive: false,
+    isActive: true,
     path: "C:\\Users\\DCanS\\AppData\\Local\\Blisk\\Application\\blisk.exe",
-    args: ["--user-data-dir=C:\\~browsers\\blisk\\application.com", `http://localhost:${port}`],
+    args: [`--user-data-dir=C:\\~browsers\\blisk\\${browserName}`, `http://localhost:${port}`],
   },
   cache: {
     path: `${source}/cache`,

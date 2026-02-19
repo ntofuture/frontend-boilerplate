@@ -16,5 +16,5 @@ export const setCache = (key, data) => {
   }
 
   let cachePath = path.join(config.cache.path, `${key}.json`);
-  fs.writeFileSync(cachePath, JSON.stringify(data));
+  fs.writeFileSync(cachePath, JSON.stringify(data, null, 2));
 };
