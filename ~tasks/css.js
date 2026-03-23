@@ -34,6 +34,7 @@ const cssSafeList = [
   /^nav/,
   /^dropdown/,
   /^col-/,
+  /^grecaptcha-badge/,
 ];
 
 const scss = () => {

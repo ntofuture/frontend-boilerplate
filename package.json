@@ -8,7 +8,7 @@
     "build": "gulp build",
     "clean": "gulp clean",
     "release": "gulp build && gulp compress && gulp release",
-    "release-full": "gulp clean && gulp build && gulp compress && gulp release-full"
+    "release-full": "gulp clean-all && gulp build && gulp compress && gulp release-full"
   },
   "dependencies": {
     "autoprefixer": "^10.4.21",

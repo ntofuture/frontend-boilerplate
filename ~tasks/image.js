@@ -24,7 +24,7 @@ export const image = () => {
     .pipe(
       imagemin([
         gifsicle({ interlaced: true }),
-        mozjpeg({ quality: 75, progressive: true }),
+        mozjpeg({ quality: 90, progressive: true }),
         optipng({ optimizationLevel: 5 }),
         svgo({
           plugins: [
