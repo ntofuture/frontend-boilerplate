@@ -7,6 +7,7 @@
     "dev": "gulp development",
     "build": "gulp build",
     "clean": "gulp clean",
+    "clean-all": "gulp clean-all",
     "release": "gulp build && gulp compress && gulp release",
     "release-full": "gulp clean-all && gulp build && gulp compress && gulp release-full"
   },
